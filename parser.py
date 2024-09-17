@@ -1,4 +1,5 @@
 import nltk
+import re
 import sys
 
 TERMINALS = """
@@ -62,8 +63,11 @@ def preprocess(sentence):
     and removing any word that does not contain at least one alphabetic
     character.
     """
-    raise NotImplementedError
-
+    #filtering the data and make a list
+    result = re.findall(r'\b\w*[a-zA-Z]+\w*\b', sentence)
+    
+    return [word.lower() for word in result]
+    
 
 def np_chunk(tree):
     """
